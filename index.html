@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spare Part Water Consumption Calculator</title>
+    <style>
+      body {
+        font-family: sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Spare Part Water Consumption Calculator</h1>
+    <p>
+      This calculator estimates the spare part water consumption based on the
+      total water consumption of two power plants and a spare part ratio.
+    </p>
+
+    <label for="waterConsumptionTotal">Total Water Consumption (m³):</label>
+    <input type="number" id="waterConsumptionTotal" value="7000000" />
+
+    <label for="waterConsumptionNeighbor"
+      >Neighboring Power Plant Water Consumption (m³):</label
+    >
+    <input type="number" id="waterConsumptionNeighbor" value="1300000" />
+
+    <label for="sparePartRatio">Spare Part Ratio:</label>
+    <input type="number" id="sparePartRatio" value="0.1" />
+
+    <button onclick="calculateSparePartWaterConsumption()">Calculate</button>
+
+    <p id="result"></p>
+
+    <script>
+      function calculateSparePartWaterConsumption() {
+        const waterConsumptionTotal = parseFloat(
+          document.getElementById("waterConsumptionTotal").value
+        );
+        const waterConsumptionNeighbor = parseFloat(
+          document.getElementById("waterConsumptionNeighbor").value
+        );
+        const sparePartRatio = parseFloat(
+          document.getElementById("sparePartRatio").value
+        );
+
+        const sparePartWaterConsumptionTotal =
+          waterConsumptionTotal * sparePartRatio;
+        const sparePartWaterConsumptionNeighbor =
+          waterConsumptionNeighbor * sparePartRatio;
+
+        const totalSparePartWaterConsumption =
+          sparePartWaterConsumptionTotal + sparePartWaterConsumptionNeighbor;
+
+        document.getElementById(
+          "result"
+        ).innerHTML = `Total Spare Part Water Consumption: ${totalSparePartWaterConsumption.toFixed(
+          2
+        )} m³`;
+      }
+    </script>
+  </body>
+</html>
